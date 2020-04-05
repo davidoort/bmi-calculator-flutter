@@ -1,7 +1,11 @@
+import 'package:bmi_calculator/components/bottom_button.dart';
+import 'package:bmi_calculator/screens/results_page.dart';
 import 'package:flutter/material.dart';
-import 'reusable_card.dart';
-import 'gender_card.dart';
-import 'utils.dart';
+import 'package:bmi_calculator/components/reusable_card.dart';
+import 'package:bmi_calculator/components/gender_card.dart';
+import 'package:bmi_calculator/utils.dart';
+import 'package:bmi_calculator/functions/calculator_brain.dart';
+import 'package:flutter/services.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -15,6 +19,15 @@ class _InputPageState extends State<InputPage> {
   int height = 180;
   int weight = 65;
   int age = 30;
+
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -208,10 +221,13 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            color: kBottomContainerColor,
-            margin: EdgeInsets.only(top: 10),
-            height: kBottomContainerHeight,
+          BottomButton(
+            displayText: 'CALCULATE',
+            onTap: (context) {
+              CalculatorBrain brain = CalculatorBrain(height: height.toDouble(), weight: weight.toDouble(),);
+
+              MaterialPageRoute(builder: (context) => ResultsPage(bmi: brain.getBMI(), resultText: brain.getTextResult(), interpretation: brain.getInterpretation()));
+            },
           ),
         ],
       ),

@@ -10,6 +10,11 @@ const kNumberTextStyle = TextStyle(
   fontSize: 50.0,
 );
 
+const kLargeButtonTextStyle = TextStyle(
+  fontSize: 25,
+  fontWeight: FontWeight.w600,
+);
+
 const primaryColor = Color(0xFF090B21);
 
 const kBottomContainerHeight = 80.0;
