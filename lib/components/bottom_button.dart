@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'utils.dart';
+import 'package:bmi_calculator/utils.dart';
 
 class BottomButton extends StatelessWidget {
   final String displayText;

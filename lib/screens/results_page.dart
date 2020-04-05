@@ -8,7 +8,10 @@ class ResultsPage extends StatelessWidget {
   final String resultText;
   final String interpretation;
 
-  ResultsPage({@required this.bmi, @required this.resultText, @required this.interpretation});
+  ResultsPage(
+      {@required this.bmi,
+      @required this.resultText,
+      @required this.interpretation});
 
   @override
   Widget build(BuildContext context) {
@@ -38,24 +41,25 @@ class ResultsPage extends StatelessWidget {
                     bmi,
                     style: kNumberTextStyle,
                   ),
-                  Column(
-                    children: <Widget>[
-                      Text(
-                        interpretation,
-                        style: kLabelTextStyle,
-                      ),
-                      Text('')
-                    ],
+                  Text(
+                    interpretation,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
             ),
           ),
-          BottomButton(displayText: 'RE-CALCULATE'),
+          BottomButton(
+            displayText: 'RE-CALCULATE',
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
         ],
       ),
     );
   }
 }
-
-
